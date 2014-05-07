@@ -1,0 +1,135 @@
+
+\begin{frame}
+\frametitle{Clay GDSM Sensitivity Analysis}
+\footnotesize{
+\begin{itemize}
+\item Barrier Degradation
+\item Sorption
+\item Solubility
+\item Advective Velocity
+\item Diffusivity
+\end{itemize}
+\input{./images/clay_gdsm}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nested Components}
+  The NuclideModel in a Component can be interchangeably represented by any of 
+  the four nuclide transport models. 
+    \begin{itemize}
+      \item Degradation Rate Based Failure Model
+      \item Mixed Cell with Degradation, Sorption, Solubility Limitation
+      \item Lumped Parameter Model
+      \item 1 Dimensional Approximate Advection Dispersion Solution, Brenner 
+      \cite{brenner_diffusion_1962}
+    \end{itemize}
+\end{frame}
+
+
+
+%\begin{frame}
+%  \frametitle{Component Interfaces}
+%  \footnotesize{
+%Solutions to this equation can be categorized by their boundary conditions and 
+%those boundary conditions serve as the interfaces between components in the 
+%Cyder library of nuclide transport models.
+%
+%  \begin{figure}[htp!]
+%    \begin{center}
+%      \def\svgwidth{\textwidth}
+%      \input{images/flow.eps_tex}
+%    \end{center}
+%    \caption{The boundaries between components are robust interfaces defined by 
+%    Source Term, Dirichlet, Neumann, and Cauchy boundary conditions.}
+%    \label{fig:flow}
+%  \end{figure}
+%  }
+%\end{frame}
+
+\begin{frame}
+  \frametitle{Radionuclide Transport: Degradation Rate Based Release}
+  \input{./images/deg_volumes}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Radionuclide Transport : Mixed Cell with Sorption and Solubility}
+  \input{./images/deg_sorb_volumes}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Radionuclide Transport : Mixed Cell Sorption}
+The mass of contaminant sorbed into the degraded and precipitated solids can be
+found using a linear isotherm model \cite{schwartz_fundamentals_2004},
+characterized by the relationship 
+\begin{align}
+s_{i} &= K_{di} C_{i}
+\label{linear_iso}
+\intertext{where}
+s_i &= \mbox{ the solid concentration of isotope i }[kg/kg]\nonumber\\
+K_{di} &= \mbox{ the distribution coefficient of isotope i}[m^3/kg]\nonumber\\
+C_i &= \mbox{ the liquid concentration of isotope i }[kg/m^3].\nonumber
+\end{align}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Radionuclide Transport : Mixed Cell Solubility Limitation}
+In addition to engineered barriers, contaminant transport is constrained by 
+  the solubility limit \cite{hedin_integrated_2002}, 
+    \begin{align}
+      m_{s,i} &\leq V_w C_{sol,i},
+    \intertext{where}
+      m_{s,i} &= \mbox{ solubility limited mass of isotope i in volume }V_w [kg]\nonumber\\ 
+      V_w &= \mbox{ volume of the solution }[m^3]\nonumber\\
+      C_{sol,i} &= \mbox{ solubility limit, the maximum concentration of i }[kg/m^3].\nonumber
+    \end{align}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Radionuclide Transport: Lumped Parameter Transport Model}
+\footnotesize{
+\begin{figure}[htbp!]
+  \begin{center}
+    \def\svgwidth{\textwidth}
+    \input{images/lumpedseries.eps_tex}
+  \end{center}
+  \caption{ The method by which each lumped parameter component is modeled is
+according to a relationship between the incoming concentration, $C_{in}(t)$,
+and the outgoing concentration, $C_{out}(t)$.}
+  \label{fig:lumpedseries}
+\end{figure}
+
+\begin{align}
+  C_{out}(t) &= \int_0^\infty C_{in}(t-t')g(t')e^{-\lambda t'}dt'
+  \label{lumped2}
+  \intertext{where}
+  t'  &= \mbox{ time of entry }[s]\nonumber\\
+  t-t'  &= \mbox{ transit time }[s]\nonumber\\
+  g(t-t')  &= \mbox{ response function, a.k.a. transit time distribution}[-]\nonumber\\
+  \lambda &= \mbox{ radioactive decay constant}[s^{-1}].\nonumber
+\end{align}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Radionuclide Transport: 1D Finite, Cauchy B.C.}
+\begin{figure}[htbp!]
+  \begin{center}
+    \def\svgwidth{.5\textwidth}
+    \input{images/1dfin.eps_tex}
+  \end{center}
+  \caption{A one dimensional, finite, unidirectional flow,
+  solution with Cauchy and Neumann boundary conditions 
+\cite{van_genuchten_analytical_1982, brenner_diffusion_1962}.}
+  \label{fig:1dinf}
+\end{figure}
+\end{frame}
+
+
+\input{./nuclide_demonstration/wf_deg_inv}
+\input{./nuclide_demonstration/kd}
+\input{./nuclide_demonstration/sol}
