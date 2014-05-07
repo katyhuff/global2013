@@ -1,0 +1,51 @@
+% Provide your results:
+%       clearly
+
+The primary outcome of this work is a mulitdimensional database of repository temperature 
+change per mass of high heat contributing isotopes supporting the implementation 
+of the \gls{STC} method in \Cyder. 
+
+A validation effort concerning this tool was performed to assess the validity 
+of the \gls{STC} method for the purpose of repository thermal response 
+estimation.  Comparison of the results of this method with the \gls{LLNL} model 
+\cite{greenberg_application_2012} gave results within the accuracy range of the 
+model itself performs against the SINDA code \cite{huff_numerical_2012} and 
+demonstrated the way in which inaccuracies from neglected low heat contributing 
+nuclides are bounded. 
+
+Figures \ref{fig:CmValidation} and \ref{fig:CmPercentError} show the results of 
+one example validation exercise comparing the combined scaling and  
+superposition calculations demonstrated in Figures \ref{fig:CmScaling} and 
+\ref{fig:CmSuperposition} respectively. This particular validation example, 
+containing no neglected nuclides, demonstrates an average error of 1.1\% and a 
+maximum error of 4.4\%, where percent error is 
+\begin{align}
+\mbox{ percent error } &= 100\times\frac{\left|\Delta T_{LLNL} - \Delta T_{STC}\right|}{ \Delta T_{LLNL}}.
+\end{align}
+
+\begin{figure}[htp!]
+\begin{center}
+\includegraphics[width=\columnwidth]{./thermal_models/CmValidation.eps}
+\end{center}
+\caption{This comparison of \gls{STC} calculated thermal response from $Cm$ 
+inventory per MTHM in 51GWd burnup UOX PWR fuel compares favorably with results 
+from the semi-analytic model from LLNL.} 
+\label{fig:CmValidation}
+\end{figure}
+
+\begin{figure}[htp!]
+\begin{center}
+\includegraphics[width=\columnwidth]{./thermal_models/CmPercentError.eps}
+\end{center}
+\caption{Percent error between the semi-analytic model from LLNL and the \gls{STC} 
+calculated thermal response from $Cm$ inventory per MTHM in 51GWd burnup UOX 
+PWR fuel demonstrates a maximum percent error of 4.4\%.}
+\label{fig:CmPercentError}
+\end{figure}
+% Unit Test Results
+In addition to this validation effort, continual verification of code behavior 
+is enabled by a suite of unit tests packaged with the tool. These tests are 
+provided along with the source code so that they may be performed to evaluate 
+the implementated behavior of units of functionality within the interpolation 
+and specific temperature change algorithms even as the code is improved in the 
+future.  

@@ -1,0 +1,62 @@
+
+\section{Introduction}
+
+This work demonstrates the sensitivity of fuel cycle system metrics to dynamic 
+feedback effects of geologic disposal capacity constraints and repository performance. Cyder 
+\cite{huff_cyder_2013} is a computational tool capable of dynamically 
+determining repository capacity and performance for arbitrary waste compositions 
+in arbitrarily comingled waste streams in a range of reducing, saturated 
+geologic disposal environments (i.e.  enclosed clay, salt, and granite 
+concepts). In this work the Cyder tool integrates dynamically with the  Cyclus 
+fuel cycle simulation tool \cite{wilson_cyclus:_2012} to demonstrate the 
+magnitude with which global fuel cycle system metrics are sensitive to thermal 
+and hydrologic repository geology parameters in the context of fuel cycle 
+technology decisions.
+
+Sensitivity analyses were conducted which span the parametric range described in Table 
+\ref{tab:base_cases}.
+
+\input{base_cases}
+
+Fuel cycle metrics sensitive to repository capacity feedbacks include average spent fuel storage time, necessary 
+intermediate storage capacity, and availability of reusable spent fuel. Other 
+global fuel cycle behaviors that are affected by repository feedbacks include 
+material routing and spent fuel market economics. This sensitivity analysis 
+focused on average spent fuel storage time and intermediate storage capacity as 
+well as necessary repository footprint and peak annual dose, which are affected 
+by heat and radionuclide release characteristics specific to variable spent fuel 
+compositions associated with alternative fuel cycles.  
+
+
+\section{Methods}
+
+
+For dynamic thermal capacity analysis in Cyder, a transient model utilizes a 
+linear approximation of heat based capacity quickly for each 
+arbitrary waste stream offered to the repository. This relies on a thermal reference database of repository heat 
+evolution curves covering the thermal coefficient range of the main geologies of 
+interest and over a range of realistic waste package spacings. 
+
+Hydrologic contaminant transport in Cyder is implemented with four 
+interchangeable  methods in a modular software design. These modeling options 
+alternately optimize speed and fidelity in representations of barrier components 
+within the repository concept (i.e. waste form, waste package, buffer, near 
+field geology, and far field geology)\cite{huff_hydrologic_2013}.  Simplistic 
+models include a congruent release component degradation model and a mixed cell 
+control volume model. For systems in which the flow can be assumed constant, a 
+medium fidelity lumped parameter dispersion model is implemented. Also 
+implemented is a Leij et al. solution to the advection dispersion equation for 
+Cauchy boundary condition \cite{leij_analytical_1991, 
+van_genuchten_analytical_1982}.  
+
+\section{Results}
+
+Computational fuel cycle simulation tools capable of simulating heterogeneous spent fuel 
+isotopics resulting from transition scenarios and alternative fuel cycles have 
+previously lacked equally dynamic repository modeling options.  This work 
+demonstrates that the Cyder generic repository model can inform fuel cycle 
+metrics by providing just such a dynamic interface between waste management and fuel cycle technology decisions. 
+
+The sensitivity of global fuel cycle metrics concerned with material routing, 
+intermediate storage time, and repository performance were investigated in the 
+context of dynamic feedback effects from repository capacity and performance. 
